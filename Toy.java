@@ -1,6 +1,7 @@
 public class Toy {
     private int toyId;
     private String toyName;
+    private int amount;
     private int weight;
 
     public Toy(int toyId, String toyName,int weight) {
@@ -26,8 +27,18 @@ public class Toy {
         this.toyName = toyName;
     }
 
+
+    public int getAmount() {
+        return this.amount;
+    }
+
+    public void setAmount(int amount) {
+
+        this.amount = amount;
+    }
+
         public int getWeight() {
-        return weight;
+        return this.weight;
     }
 
         public void setWeight(int weight) {

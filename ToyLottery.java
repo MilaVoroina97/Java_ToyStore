@@ -1,39 +1,15 @@
-import java.util.PriorityQueue;
-import java.util.Scanner;
 
-public class ToyLottery implements ChoiceToy,GetToy{
+public class ToyLottery{
 
-    private PriorityQueue<Toy> toyList = new PriorityQueue<>();
+    private ToyCollection toyCollection;
 
-    public Scanner scanner;
-
-    public PriorityQueue<Toy> getToyList(){
-        return this.toyList;
+    public ToyLottery(){
+        toyCollection = new ToyCollection();
     }
 
-    public int getToyAmount(){
-        return this.toyList.size();
+    public ToyCollection getToyCollection(){
+        return this.toyCollection;
     }
 
-    public void addToy(Toy newToy){
-        this.toyList.add(newToy);
-    }
-
-    public void deleteToy(Toy toy){
-
-        this.toyList.remove(toy);
-
-    }
-    @Override
-    public Toy getToy(PriorityQueue<Toy> toyList) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getToy'");
-    }
-
-    @Override
-    public void choiceANewToy() {
-
-        System.out.println("Введите название ");
-    }
     
 }

@@ -1,12 +1,13 @@
 public class Toy {
-    private int toyId;
-    private String toyName;
-    private int amount;
-    private int weight;
+    private int toyId;           // id игрушки
+    private String toyName;      // название игрушки
+    private int amount;          // количество 
+    private double weight;          // частота выпадения
 
-    public Toy(int toyId, String toyName,int weight) {
+    public Toy(int toyId, String toyName,int amount,double weight) {
         this.toyId = toyId;
         this.toyName = toyName;
+        this.amount = amount;
         this.weight = weight;
     }
 
@@ -37,7 +38,7 @@ public class Toy {
         this.amount = amount;
     }
 
-        public int getWeight() {
+        public double getWeight() {
         return this.weight;
     }
 

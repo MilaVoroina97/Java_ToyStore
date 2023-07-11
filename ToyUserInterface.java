@@ -7,7 +7,12 @@ public class ToyUserInterface implements ChoiceToy{
     private ToyCollection toyCollection;
 
     public ToyUserInterface(){
+        toyCollection = new ToyCollection();
         scanner = new Scanner(System.in);
+    }
+
+    public ToyCollection getToyCollection(){
+        return this.toyCollection;
     }
 
     @Override
@@ -16,30 +21,50 @@ public class ToyUserInterface implements ChoiceToy{
         System.out.println("Это режим добавления игрушки в розыгрыш");
         int id = generateId();
         System.out.println("Введите название игрушки : ");
-        String name = this.scanner.nextLine();
+        String name = this.scanner.next();
         System.out.println("Введите количество игрушки : ");
         int amount = this.scanner.nextInt();
         double weight = generateToyWeight();
-        toyCollection.addToy(new Toy(id, name, amount, weight));
+        Toy newToy = new Toy(id, name, amount, weight);
+        toyCollection.addToy(newToy);
+        System.out.println("Toy has been added");
     }
 
         private double generateToyWeight(){
 
+        
         double sum = 0;
+        if(!toyCollection.getToyList().isEmpty()){
         for(Toy toy : toyCollection.getToyList()){
 
             sum += toy.getWeight();
+            
         }
+            return Math.random() * 100 / sum;
+      }
+    else{
+        System.out.println("В списке пока нет игрушек,введите вес игрушки в ручную : ");
+        int newWeight = scanner.nextInt();
+        return newWeight;
 
-        return Math.random() * 100 / sum;
+      }
+
 
     }
 
     private int generateId(){
 
-        int lastId = toyCollection.getToyListSize() + 1;
-        lastId++;
-        return lastId;
+        if(!toyCollection.getToyList().isEmpty()){
+            int lastId = toyCollection.getToyListSize() + 1;
+            lastId++;
+            return lastId;
+        }
+
+        else{
+            System.out.println("В списке пока нет игрушек,введите id игрушки в ручную : ");
+            int newId = scanner.nextInt();
+            return newId;
+        }
     }
 
 

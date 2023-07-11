@@ -5,10 +5,8 @@ public class ToyCollection implements GetToy{
 
     private ArrayList<Toy> toyList;
 
-    private int toyCount;
-
     public ToyCollection(){
-        this.toyList = new ArrayList<>();
+        this.toyList = new ArrayList<Toy>();
     }
 
     public ArrayList<Toy> getToyList(){
@@ -19,32 +17,29 @@ public class ToyCollection implements GetToy{
         return this.toyList.size();
     }
 
-    public int getToyCount(){
-        return this.toyCount;
-    }
-    
     public void addToy(Toy newToy){
         this.toyList.add(newToy);
 
     }
 
-    public void deleteToy(Toy toy){
-        this.toyList.remove(toy);
-    }
-
-
     @Override
     public Toy getToy(String name) {
 
         int findIndex = 0;
-        for(Toy findToy : toyList){
-            if(name.equals(findToy.getToyName())){
-                findIndex = this.toyList.indexOf(findToy);
+        
+        if(!this.toyList.isEmpty()){
+
+            for(Toy findToy : toyList){
+                
+                if(name.equals(findToy.getToyName())){
+                    findIndex = this.toyList.indexOf(findToy);
+                }
             }
+        }else{
+            System.out.println("В списке пока нет игрушек, готовых к розыгрышу");
+            return null;
         }
-
-        return this.toyList.get(findIndex);
-
-    }
+     return this.toyList.get(findIndex);
     
+    } 
 }

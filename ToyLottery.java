@@ -20,7 +20,7 @@ public class ToyLottery{
 
     public Toy toyLottery(){
 
-        getToyUserInterface().choiceANewToy();
+        getToyUserInterface().getUsercommand();
         int raffle = (int) (Math.random()*100);
         toyCollection.getToyList().remove(0);
         return toyCollection.getToyList().get(raffle);

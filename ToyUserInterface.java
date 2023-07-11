@@ -59,16 +59,20 @@ public class ToyUserInterface implements ChoiceToy{
     public void getUsercommand(){
 
         while(true){
-            System.out.println("Введите,пожалуйста,номер команды -> 1. Добавить игрушку в розыгрыш\n 2. Найти игрушку в розыгрыше\nЕсли Вы хотите начать розыгрыш нажмите 0");
+            System.out.println("Введите,пожалуйста,номер команды -> 1. Добавить игрушку в розыгрыш\n2. Найти игрушку в розыгрыше\nЕсли Вы хотите начать розыгрыш нажмите 0");
             if(scanner.hasNextInt()){
                 int command = scanner.nextInt();
                 switch(command){
                     case 1:
                         choiceANewToy();
+                        break;
                     case 2:
                         findToyInterface();
+                        break;
                     case 0:
                         break;
+                    default:
+                        System.out.println("Такой команды нет, попробуйте еще раз пожалуйста : ");
                 }
             }
         }

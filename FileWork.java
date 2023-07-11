@@ -20,6 +20,7 @@ public class FileWork {
                 FileWriter writer = new FileWriter(pathToFile, true);
                 Toy winToy = getToyLottery().toyLottery();
                 writer.write(winToy.toString() + "\n");
+                System.out.println("Note has been added");
                 writer.close();
             } catch (IOException e) {
                 System.out.println("Ошибка при записи в файл игрушки");

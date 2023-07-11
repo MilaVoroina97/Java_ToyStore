@@ -19,9 +19,14 @@ public class ToyLottery{
     public Toy toyLottery(){
 
         getToyUserInterface().getUsercommand();
-        int raffle = (int) (Math.random()*100);
-        toyUserInterface.getToyCollection().getToyList().remove(0);
-        return toyUserInterface.getToyCollection().getToyList().get(raffle);
+        if(!toyUserInterface.getToyCollection().getToyList().isEmpty()){
+            int raffle = (int)(Math.random());
+            toyUserInterface.getToyCollection().getToyList().remove(0);
+            return toyUserInterface.getToyCollection().getToyList().get(raffle);
+        }else{
+            System.out.println("В списке нет ни одной игрушки для розыгрыша,нужно сначала их добавить");
+            return null;
+        }
 
     }
 

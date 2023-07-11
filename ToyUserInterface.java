@@ -71,16 +71,18 @@ public class ToyUserInterface implements ChoiceToy{
     public void findToyInterface(){
         System.out.println("Это режим поиска игрушки по ее названию, для того чтобы посмотреть участвует ли данная игрушка в розыгрыше.");
         System.out.println("Введите, пожалуйста, название игрушки, для проверки ее наличия в розыгрыше : ");
-        String name = scanner.nextLine();
-        Toy findToy = toyCollection.getToy(name);
-        if(findToy != null) {
-            System.out.format("Игрушка найдена - %s", findToy.toString());
+        String name = scanner.next();
+        if(name != null && !toyCollection.getToyList().isEmpty()){
+                Toy findToy = toyCollection.getToy(name);
+                        if(findToy != null) {
+                            System.out.format("Игрушка найдена - %s", findToy.toString());
+                        }else{
+                            System.out.println("Данная игрушка не участвует в розыгрыше");
+                        }
         }else{
-            System.out.println("Данная игрушка не участвует в розыгрыше");
+            System.out.println("В списке нет пока игрушек.");
         }
-
     }
-
     public void getUsercommand(){
 
         while(true){

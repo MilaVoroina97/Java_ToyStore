@@ -46,8 +46,8 @@ public class Toy {
         this.weight = weight;
     }
 
-        @Override
+    @Override
     public String toString() {
-        return String.format("%s ,ID : %d , вес : %d", toyName, toyId, weight);
+        return String.format("ID : %d , name : %s, amount : %d, weight : %f",toyId, toyName, amount, weight);
     }
 }

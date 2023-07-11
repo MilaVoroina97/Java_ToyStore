@@ -24,39 +24,39 @@ public class ToyUserInterface implements ChoiceToy{
         String name = this.scanner.next();
         System.out.println("Введите количество игрушки : ");
         int amount = this.scanner.nextInt();
-        double weight = generateToyWeight();
+        System.out.println("Введите вес игрушки : ");
+        double weight = scanner.nextDouble();
         Toy newToy = new Toy(id, name, amount, weight);
         toyCollection.addToy(newToy);
         System.out.println("Toy has been added");
     }
 
-        private double generateToyWeight(){
+    //     private double generateToyWeight(){
 
         
-        double sum = 0;
-        if(!toyCollection.getToyList().isEmpty()){
-        for(Toy toy : toyCollection.getToyList()){
+    //     double sum = 0;
+    //     if(!toyCollection.getToyList().isEmpty()){
+    //     for(Toy toy : toyCollection.getToyList()){
 
-            sum += toy.getWeight();
+    //         sum += toy.getWeight();
             
-        }
-            return Math.random() * 100 / sum;
-      }
-    else{
-        System.out.println("В списке пока нет игрушек,введите вес игрушки в ручную : ");
-        int newWeight = scanner.nextInt();
-        return newWeight;
+    //     }
+    //         return Math.random() * 100 / sum;
+    //   }
+    // else{
+    //     System.out.println("В списке пока нет игрушек,введите вес игрушки в ручную : ");
+    //     int newWeight = scanner.nextInt();
+    //     return newWeight;
 
-      }
+    //   }
 
 
-    }
+    // }
 
     private int generateId(){
 
         if(!toyCollection.getToyList().isEmpty()){
             int lastId = toyCollection.getToyListSize() + 1;
-            lastId++;
             return lastId;
         }
 
@@ -75,7 +75,7 @@ public class ToyUserInterface implements ChoiceToy{
         if(name != null && !toyCollection.getToyList().isEmpty()){
                 Toy findToy = toyCollection.getToy(name);
                         if(findToy != null) {
-                            System.out.format("Игрушка найдена - %s", findToy.toString());
+                            System.out.format("Игрушка найдена - %s\n", findToy.toString());
                         }else{
                             System.out.println("Данная игрушка не участвует в розыгрыше");
                         }
@@ -85,8 +85,9 @@ public class ToyUserInterface implements ChoiceToy{
     }
     public void getUsercommand(){
 
-        while(true){
-            System.out.println("Введите,пожалуйста,номер команды -> 1. Добавить игрушку в розыгрыш\n2. Найти игрушку в розыгрыше\nЕсли Вы хотите начать розыгрыш нажмите 0");
+        boolean end = false;
+        do {
+            System.out.println("Введите,пожалуйста,номер команды -> 1. Добавить игрушку в розыгрыш\n2. Найти игрушку в розыгрыше\nЕсли Вы хотите начать розыгрыш нажмите 0\n");
             if(scanner.hasNextInt()){
                 int command = scanner.nextInt();
                 switch(command){
@@ -97,13 +98,19 @@ public class ToyUserInterface implements ChoiceToy{
                         findToyInterface();
                         break;
                     case 0:
+                        end = true;
                         break;
                     default:
-                        System.out.println("Такой команды нет, попробуйте еще раз пожалуйста : ");
+                        System.out.println("Такой команды нет, попробуйте еще раз пожалуйста : \n");
                 }
             }
-        }
+        }while(!end);
 
+    }
+
+    public void receiveAllToys(){
+        System.out.println("Перед началом розыгрыша доступен режим просмотра всех игрушек : ");
+        toyCollection.getAllToys();
     }
 
 }

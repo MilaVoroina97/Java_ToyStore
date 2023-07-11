@@ -42,4 +42,10 @@ public class ToyCollection implements GetToy{
      return this.toyList.get(findIndex);
     
     } 
+
+    public void getAllToys(){
+        for(Toy toy : toyList){
+            System.out.println(toy.toString() + "\n");
+        }
+    }
 }

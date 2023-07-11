@@ -1,5 +1,5 @@
 public interface GetToy {
 
-    public Toy getToy();
+    public Toy getToy(String name);
     
 }
